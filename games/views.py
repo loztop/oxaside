@@ -138,7 +138,8 @@ def update_view(request):
                               {'full_name': request.user.username})
 
 
-
+def about(request):
+    return render_to_response('about.html')
 
 def add_start(request):
     form = MyRegistrationForm()

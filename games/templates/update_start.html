@@ -9,6 +9,8 @@
 {% csrf_token %}
   
    <p>
+   Login to update existing game.
+
    </p>
 
    {% if form.errors %}
@@ -25,7 +27,7 @@
     <input type="text" name="username" value="" id="username" placeholder="Username"> 
   
   <button type="submit" class="btn btn-primary" >
-      {% bootstrap_icon "star" %} Login
+       Login
     </button>    
   </form>
   

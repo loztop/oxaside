@@ -17,7 +17,11 @@
  {% csrf_token %}
   
    <p>
+   Login or register to add a new game.
+
    </p>
+
+
 
    {% if form.errors %}
     <p class="error">Sorry mate, this username doesn't exist</p>
@@ -33,12 +37,15 @@
     <input type="text" name="username" value="" id="username" placeholder="Username"> 
   
   <button type="submit" class="btn btn-primary" >
-      {% bootstrap_icon "star" %} Login
+  Login
     </button>    
   </form>
 
+   <p>
+OR
+  </p>
 
-   <h2>OR</h2>
+   <!--<h2>OR</h2>-->
 
 
   {% if form.errors %}
@@ -52,8 +59,10 @@
     <input type="text" name="username" value="" id="username" placeholder="Username">
   
   <button type="submit" class="btn btn-primary" >
-      {% bootstrap_icon "star" %} Register
+       Register
     </button>    
+        (no sign up required)
+
   </form>  
 
 <!--  <form action="/accounts/add_register/" method="post">{% csrf_token %} 

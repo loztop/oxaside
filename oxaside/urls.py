@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^add_register/$',  'games.views.add_register'),  
     url(r'^add_game/$',  'games.views.add_game'),  
     url(r'^update_game/$',  'games.views.update_game'), 
+    url(r'^about/$',  'games.views.about'), 
 
     #Table view
     #url(r'^people/$',  'games.views.people'),
