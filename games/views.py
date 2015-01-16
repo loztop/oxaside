@@ -37,14 +37,17 @@ def index(request):
      #   table = GameTable(Game.objects.filter(user=request.user.id))
 
 
-    table_live.order_by = "kickoff_date"
-    table_past.order_by = "kickoff_date"
+   # table_live.order_by = "kickoff_date"
+   # table_past.order_by = "kickoff_date"
     #context_instance = RequestContext(request)
-    #RequestConfig(request).configure(table_past)
+    RequestConfig(request).configure(table_past)
+    RequestConfig(request).configure(table_live)
+
     #c = {}
     #c.update(csrf(request))    
+    #return render(request, 'index.html', {'table_past': table_past, 'table_live': table_live})
     return render(request, 'index.html', {'table_past': table_past, 'table_live': table_live})
-    
+
  ##Authentication stuff
 
 def login(request):

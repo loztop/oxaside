@@ -73,22 +73,22 @@ class GameForm(forms.ModelForm):
         widgets = {
             #Use localization and bootstrap 3
             #'datetime': DateTimeWidget(attrs={'id':"yourdatetimeid"}, usel10n = True, bootstrap_version=3)
-            'kickoff_date': DateTimeWidget(options = dateTimeOptions,   bootstrap_version=3 , attrs={'placeholder': 'Kickoff Date/Time','size':'30'})
+            'kickoff_date': DateTimeWidget(options = dateTimeOptions,   bootstrap_version=3 , attrs={'placeholder': 'Kickoff Date/Time','size':'31'})
           
 
         }
 
  
-    #game_text = forms.CharField(max_length=4002, help_text="Information",widget=forms.Textarea(attrs={'placeholder': 'Other game information (skill level, price, kit etc.)','rows':2, 'cols':30}))
+    #game_text = forms.CharField(max_length=4002, help_text="Information",widget=forms.Textarea(attrs={'placeholder': 'Other game information (skill level, price, kit etc.)','rows':2, 'cols':31}))
 
+    #kickoff_date = forms.DateTimeField(help_text="Details")
 
-
-    game_text = forms.CharField(max_length=4002, help_text="Details",widget=forms.TextInput(attrs={'placeholder': 'Other game info (skill level, price, kit)','size':30}))
-    location_text = forms.CharField(required=True,label='location_text',max_length=400, help_text="Location",widget=forms.TextInput(attrs={'placeholder': 'Location of the game','size':'30'}))
-    contact_text = forms.CharField(required=True,max_length=100,help_text='Contact',widget=forms.TextInput(attrs={'placeholder': 'Contact details (email or mobile number)','size':'30'}))
+    game_text = forms.CharField(max_length=4002, help_text="Details",widget=forms.TextInput(attrs={'placeholder': 'Other game info (skill level, price, kit)','size':31}))
+    location_text = forms.CharField(required=True,label='location_text',max_length=400, help_text="Location",widget=forms.TextInput(attrs={'placeholder': 'Location of the game','size':'31'}))
+    contact_text = forms.CharField(required=True,max_length=100,help_text='Contact',widget=forms.TextInput(attrs={'placeholder': 'Contact details (email or mobile number)','size':'31'}))
 
     players_needed =forms.IntegerField(required=True, help_text='Spaces',min_value=0,
-        max_value=30, widget=forms.TextInput(attrs={'placeholder': 'Number of players you are looking for','size':'30'}))
+        max_value=31, widget=forms.TextInput(attrs={'placeholder': 'Number of players you are looking for','size':'31'}))
    
 
  

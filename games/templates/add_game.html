@@ -66,8 +66,10 @@
                  class="form-group{% if field.errors %} has-error{% endif %}" >
                  {{ field }}       
 
-                  {{ field.help_text }} 
-
+                  {% if field.help_text  %}
+                     ({{ field.help_text }})
+                    {% endif %}
+ 
                  {{ field.location_text }}       
 
 
