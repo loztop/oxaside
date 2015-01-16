@@ -23,7 +23,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django_tables2   import RequestConfig
-from games.tables  import GameTable
+from games.tables  import GameTable, UpdateTable
 from django.template import RequestContext
 
 from datetime import datetime    
@@ -263,7 +263,7 @@ def update_login(request):
 
 def update_game(request):
 
-    table = GameTable(Game.objects.filter(user=request.user.id))
+    table = UpdateTable(Game.objects.filter(user=request.user.id))
     table.order_by = "kickoff_date"
     #context_instance = RequestContext(request)
     #RequestConfig(request).configure(table)
