@@ -1,0 +1,96 @@
+
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+{% block content %}
+  
+ {% csrf_token %}
+  
+   <p>
+   </p>
+
+   {% if form.errors %}
+    <p class="error">Sorry mate, this username doesn't exist</p>
+  {% endif %}
+
+
+     {% if form_error %}
+    <p class="error">Sorry mate, this username doesn't exist.</p>
+  {% endif %}
+
+  <form action="/add_login/" method="post">{% csrf_token %}
+    <label for="username"></label>
+    <input type="text" name="username" value="" id="username" placeholder="Username"> 
+  
+  <button type="submit" class="btn btn-primary" >
+      {% bootstrap_icon "star" %} Login
+    </button>    
+  </form>
+
+
+   <h2>OR</h2>
+
+
+  {% if form.errors %}
+    <p class="error">Sorry mate, this username already exists</p>
+  {% endif %}
+
+
+
+ <form action="/add_register/"method="post"> {% csrf_token %}
+    <label for="username"></label>
+    <input type="text" name="username" value="" id="username" placeholder="Username">
+  
+  <button type="submit" class="btn btn-primary" >
+      {% bootstrap_icon "star" %} Register
+    </button>    
+  </form>  
+
+<!--  <form action="/accounts/add_register/" method="post">{% csrf_token %} 
+
+  
+ {{ form.non_field_errors }}
+  {% for field in form %}
+    {% if field.name = "username" %}
+      <div class="field-wrapper">
+        <div class="label-wrapper">
+          {{ field.label_tag }}
+          {% if field.field.required %}<span class="required">*</span>{% endif %}
+        </div>
+        <div class="value-wrapper">
+          {{ field }}
+          {{ field.errors }}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}   
+  </div>
+  <p>
+ {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "star" %} Create
+    </button>
+  {% endbuttons %}    
+  </p>
+  </form>  -->
+
+  
+  
+
+ 
+  
+
+ 
+ 
+  
+{% endblock %}

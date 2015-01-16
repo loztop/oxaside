@@ -1,0 +1,12 @@
+
+
+{% block content %}
+
+{% csrf_token %}
+
+  <h2>Hi {{full_name}} you are going to add this game!</h2>
+
+
+  <p>Click <a href="/accounts/logout/">here</a> to logout.</p>
+
+{% endblock %}

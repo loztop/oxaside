@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+<!-- {% bootstrap_css %} --> 
+{% bootstrap_javascript %}
+
+
+
+
+{% block content %}
+
+
+
+
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+
+  <!-- <p><a href="/accounts/login/">Update</a> game.</p> -->
+  <p><a href="/accounts/add_start/">Add</a> game.</p> 
+
+
+ {% if form.errors %}
+    <p class="error">Sorry, this username does not exist</p>
+  {% endif %}
+
+  <form action="/accounts/update_login/" method="post"> {% csrf_token %}
+    <label for="username"></label>
+    <input type="text" name="username" value="" id="username" placeholder="Username">
+  
+
+
+
+    <input type="submit" value="Update game" />
+    
+  </form>
+
+       <head>
+        <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+    </head>
+    <body>
+        {% render_table people %}
+    </body>
+</html>
+
+
+
+{% endblock %}  
+
+ 
+

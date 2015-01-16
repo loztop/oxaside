@@ -1,0 +1,30 @@
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% load staticfiles %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+{% csrf_token %}
+
+  <head>
+<link rel="stylesheet" type="text/css" href="{% static 'games/screen.css' %}" />
+    </head>
+
+<h2>Hi {{full_name}} go update your game!</h2>
+
+<body>
+    {% render_table table %}
+</body>
+
+<!-- <p>Click <a href="/accounts/logout/">here</a> to logout.</p> -->
+
+
+{% endblock %}

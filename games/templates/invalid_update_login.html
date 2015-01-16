@@ -1,0 +1,14 @@
+{% load staticfiles %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %} 
+{% bootstrap_javascript %}
+
+
+{% block content %}
+
+  <h2>No game has been added using this the username </h2>
+  <p>Click <a href="/index/">here</a> to return to the main page.</p>
+
+{% endblock %}

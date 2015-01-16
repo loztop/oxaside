@@ -1,0 +1,70 @@
+ 
+  
+  {% load staticfiles %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+ {% bootstrap_css %} 
+{% bootstrap_javascript %}
+
+
+
+
+{% block content %}
+
+{% load render_table from django_tables2 %}
+<!doctype html>
+
+<html>
+       <head>
+<!--<link rel="stylesheet" type="text/css" href="{% static 'games/screen.css' %}" />-->
+
+<link rel="stylesheet" type="text/css" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+
+
+    </head>
+  <!-- <p><a href="/accounts/login/">Update</a> game.</p> -->
+  <p><a href="/add_start/">Add</a>/ <a href="/update_start/">Update</a> game</p>  
+
+ 
+<!--
+ {% if form.errors %}
+    <p class="error">Sorry, this username does not exist</p>
+  {% endif %}
+
+
+  <form action="/accounts/update_login/" method="post"> {% csrf_token %}
+    <label for="username"></label>
+    <input type="text" name="username" value="" id="username" placeholder="Username">
+  
+               <input type="submit" value="Update Game" class="btn btn-primary" /> -->
+  </form>
+ <font color="green"> Live games:</font>
+
+ <p>
+    <body>
+        {% render_table table_live %}
+    </body>
+        </p>
+ 
+
+ <P>
+ <font color="red"> Past games:</font>
+    <body>
+        {% render_table table_past %}
+    </body>
+ </P>
+
+
+</html>
+
+
+
+
+
+{% endblock %}  
+
+ 
+ 

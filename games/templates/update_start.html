@@ -1,0 +1,32 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+{% csrf_token %}
+  
+   <p>
+   </p>
+
+   {% if form.errors %}
+    <p class="error">Sorry mate, this username doesn't exists</p>
+  {% endif %}
+
+
+  {% if form_error %}
+    <p class="error">Sorry mate, this username doesn't exist.</p>
+  {% endif %}
+
+  <form action="/update_login/" method="post">{% csrf_token %}
+    <label for="username"></label>
+    <input type="text" name="username" value="" id="username" placeholder="Username"> 
+  
+  <button type="submit" class="btn btn-primary" >
+      {% bootstrap_icon "star" %} Login
+    </button>    
+  </form>
+  
+{% endblock %}

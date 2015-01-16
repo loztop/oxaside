@@ -1,0 +1,14 @@
+{% load staticfiles %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %} 
+{% bootstrap_javascript %}
+
+
+{% block content %}
+
+  <h2>Your login details are invalid!</h2>
+  <p>Click <a href="/accounts/login/">here</a> to login again.</p>
+<p>Click <a href="/accounts/register/">here</a> to register.</p>
+{% endblock %}
