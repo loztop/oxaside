@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'bootstrap3_datetime',
     'datetimewidget',
     'twitter_bootstrap',
+    'datatableview',
     'suit',
 )
 

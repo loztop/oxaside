@@ -29,6 +29,111 @@ from django.template import RequestContext
 from datetime import datetime    
 from django.utils import timezone
 
+
+
+import datatableview
+from datatableview.views import DatatableView, XEditableDatatableView
+from datatableview.utils import get_datatable_structure
+from datatableview import helpers
+
+
+def test_editable(request):
+    if request.is_ajax():
+        task = request.GET.get('task')
+        #updated_task = Task.objects.get(pk=task_id)
+        #updated_task.task = task
+        #updated_task.save()
+        return HttpResponse('true')
+    else:
+        return render_to_response('test_editable.html')
+        #return HttpResponse('not ajax')
+
+
+
+
+
+class DemoMixin(object):
+    description = """Missing description!"""
+    implementation = """Missing implementation details!"""
+
+    def get_template_names(self):
+        """ Try the view's snake_case name, or else use default simple template. """
+        name = self.__class__.__name__.replace("DatatableView", "")
+        name = re.sub(r'([a-z]|[A-Z]+)(?=[A-Z])', r'\1_', name)
+        return ["demos/" + name.lower() + ".html", "example_base.html"]
+
+    def get_context_data(self, **kwargs):
+        context = super(DemoMixin, self).get_context_data(**kwargs)
+        context['implementation'] = self.implementation
+
+        # Unwrap the lines of description text so that they don't linebreak funny after being put
+        # through the ``linebreaks`` template filter.
+        alert_types = ['info', 'warning', 'danger']
+        paragraphs = []
+        p = []
+        alert = False
+        for line in self.__doc__.splitlines():
+            line = line[4:].rstrip()
+            if not line:
+                if alert:
+                    p.append(u"""</div>""")
+                    alert = False
+                paragraphs.append(p)
+                p = []
+            elif line.lower()[:-1] in alert_types:
+                p.append(u"""<div class="alert alert-{type}">""".format(type=line.lower()[:-1]))
+                alert = True
+            else:
+                p.append(line)
+        description = "\n\n".join(" ".join(p) for p in paragraphs)
+        context['description'] = re.sub(r'``(.*?)``', r'<code>\1</code>', description)
+
+        return context
+
+class XEditableColumnsDatatableView(DemoMixin, XEditableDatatableView):
+   
+    model = Game
+    datatable_options = {
+        'columns': [
+            'id',
+            ("Headline", 'headline', helpers.make_xeditable),
+            ("Blog", 'blog', helpers.make_xeditable),
+            ("Published date", 'pub_date', helpers.make_xeditable),
+        ]
+    }
+
+    implementation = u"""
+    class XEditableColumnsDatatableView(XEditableDatatableView):
+        model = Game
+        datatable_options = {
+            'columns': [
+                'id',
+                ("Headline", 'headline', helpers.make_xeditable),
+                ("Blog", 'blog', helpers.make_xeditable),
+                ("Published date", 'pub_date', helpers.make_xeditable),
+            ]
+        }
+    </pre>
+    <pre class="brush: javascript">
+    // Page javascript
+    datatableview.auto_initialize = false;
+    $(function(){
+        var xeditable_options = {};
+        datatableview.initialize($('.datatable'), {
+            fnRowCallback: datatableview.make_xeditable(xeditable_options),
+        });
+    })
+    """
+
+
+
+
+
+
+
+
+
+
 def index(request):
     #table_live = GameTable(Game.objects.all())
     table_live = GameTable(Game.objects.filter(kickoff_date__gte=timezone.now()))
@@ -222,6 +327,7 @@ def add_game(request):
             # Now call the index() view.
             # The user will be shown the homepage.
             return index(request)
+            
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors

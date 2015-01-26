@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^blog/', include('blog.urls')),
@@ -30,6 +31,8 @@ urlpatterns = patterns('',
     url(r'^update_game/$',  'games.views.update_game'), 
     url(r'^about/$',  'games.views.about'), 
 
+    url(r'^test_editable/$', 'games.views.test_editable'),
+    
     #Table view
     #url(r'^people/$',  'games.views.people'),
 
