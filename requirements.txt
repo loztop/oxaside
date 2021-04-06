@@ -24,7 +24,7 @@ django-datetime-widget==0.9.3
 django-geojson==2.6.0
 django-jquery==1.9.1
 django-leaflet==0.15.2
-django-registration==1.0
+django-registration==3.1.2
 django-registration-redux==1.1
 django-suit==0.2.12
 django-tables2==0.15.0
